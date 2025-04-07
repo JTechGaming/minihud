@@ -18,6 +18,7 @@ import fi.dy.masa.malilib.util.time.DurationFormat;
 import fi.dy.masa.malilib.util.time.TimeFormat;
 import fi.dy.masa.minihud.MiniHUD;
 import fi.dy.masa.minihud.Reference;
+import fi.dy.masa.minihud.renderer.OverlayRendererJukeboxSoundLevel;
 import fi.dy.masa.minihud.renderer.OverlayRendererLightLevel;
 import fi.dy.masa.minihud.renderer.OverlayRendererStructures;
 import fi.dy.masa.minihud.util.BlockGridMode;
@@ -90,9 +91,12 @@ public class Configs implements IConfigHandler
         public static final ConfigDouble        LIGHT_LEVEL_NUMBER_OFFSET_SKY_X     = new ConfigDouble("lightLevelNumberOffsetSkyX", 0.42, 0.0, 1.0).apply(GENERIC_KEY);
         public static final ConfigDouble        LIGHT_LEVEL_NUMBER_OFFSET_SKY_Y     = new ConfigDouble("lightLevelNumberOffsetSkyY", 0.56, 0.0, 1.0).apply(GENERIC_KEY);
         public static final ConfigBoolean       LIGHT_LEVEL_NUMBER_ROTATION         = new ConfigBoolean("lightLevelNumberRotation", true).apply(GENERIC_KEY);
+        public static final ConfigBoolean       JUKEBOX_SOUND_LEVEL_NUMBER_ROTATION         = new ConfigBoolean("jukeboxSoundLevelNumberRotation", true).apply(GENERIC_KEY);
         public static final ConfigInteger       LIGHT_LEVEL_RANGE                   = new ConfigInteger("lightLevelRange", 24, 1, 64).apply(GENERIC_KEY);
+        public static final ConfigInteger       JUKEBOX_SOUND_LEVEL_RANGE                   = new ConfigInteger("jukeboxSoundLevelRange", 24, 1, 64).apply(GENERIC_KEY);
         public static final ConfigDouble        LIGHT_LEVEL_RENDER_OFFSET           = new ConfigDouble("lightLevelRenderOffset", 0.005, 0.0, 1.0).apply(GENERIC_KEY);
         public static final ConfigBoolean       LIGHT_LEVEL_RENDER_THROUGH          = new ConfigBoolean("lightLevelRenderThrough", false).apply(GENERIC_KEY);
+        public static final ConfigBoolean       JUKEBOX_SOUND_LEVEL_RENDER_THROUGH          = new ConfigBoolean("jukeboxSoundLevelRenderThrough", false).apply(GENERIC_KEY);
         public static final ConfigBoolean       LIGHT_LEVEL_SKIP_BLOCK_CHECK        = new ConfigBoolean("lightLevelSkipBlockCheck", false).apply(GENERIC_KEY);
         public static final ConfigInteger       LIGHT_LEVEL_THRESHOLD_DIM           = new ConfigInteger("lightLevelThresholdDim", 0, 0, 15).apply(GENERIC_KEY);
         public static final ConfigInteger       LIGHT_LEVEL_THRESHOLD_SAFE          = new ConfigInteger("lightLevelThresholdSafe", 1, 0, 15).apply(GENERIC_KEY);
@@ -169,6 +173,7 @@ public class Configs implements IConfigHandler
                 LIGHT_LEVEL_COLORED_NUMBERS,
                 LIGHT_LEVEL_NUMBER_ROTATION,
                 LIGHT_LEVEL_RENDER_THROUGH,
+                JUKEBOX_SOUND_LEVEL_RENDER_THROUGH,
                 LIGHT_LEVEL_SKIP_BLOCK_CHECK,
                 LIGHT_LEVEL_UNDER_WATER,
                 MAP_PREVIEW,
@@ -224,6 +229,7 @@ public class Configs implements IConfigHandler
                 LIGHT_LEVEL_NUMBER_OFFSET_SKY_X,
                 LIGHT_LEVEL_NUMBER_OFFSET_SKY_Y,
                 LIGHT_LEVEL_RANGE,
+                JUKEBOX_SOUND_LEVEL_RANGE,
                 LIGHT_LEVEL_THRESHOLD_DIM,
                 LIGHT_LEVEL_THRESHOLD_SAFE,
                 LIGHT_LEVEL_RENDER_OFFSET,
@@ -270,6 +276,7 @@ public class Configs implements IConfigHandler
         public static final ConfigColor BEACON_RANGE_LVL4_OVERLAY_COLOR         = new ConfigColor("beaconRangeLvl4",                    "#2060FF40").apply(COLORS_KEY);
         public static final ConfigColor BLOCK_GRID_OVERLAY_COLOR                = new ConfigColor("blockGridOverlayColor",              "#80FFFFFF").apply(COLORS_KEY);
         public static final ConfigColor CONDUIT_RANGE_OVERLAY_COLOR             = new ConfigColor("conduitRange",                       "#2030FFFF").apply(COLORS_KEY);
+        public static final ConfigColor JUKEBOX_RANGE_OVERLAY_COLOR             = new ConfigColor("jukeboxRange",                       "#2030FFFF").apply(COLORS_KEY);
         public static final ConfigColor LIGHT_LEVEL_MARKER_BLOCK_LIT            = new ConfigColor("lightLevelMarkerBlockLit",           "#FF209040").apply(COLORS_KEY);
         public static final ConfigColor LIGHT_LEVEL_MARKER_DARK                 = new ConfigColor("lightLevelMarkerDark",               "#FFFF4848").apply(COLORS_KEY);
         public static final ConfigColor LIGHT_LEVEL_MARKER_DIM                  = new ConfigColor("lightLevelMarkerDim",                "#FFC0C040").apply(COLORS_KEY);
@@ -389,6 +396,7 @@ public class Configs implements IConfigHandler
             }
 
             OverlayRendererLightLevel.INSTANCE.setRenderThrough(Configs.Generic.LIGHT_LEVEL_RENDER_THROUGH.getBooleanValue());
+            OverlayRendererJukeboxSoundLevel.INSTANCE.setRenderThrough(Configs.Generic.JUKEBOX_SOUND_LEVEL_RENDER_THROUGH.getBooleanValue());
             OverlayRendererStructures.INSTANCE.setRenderThrough(Configs.Generic.STRUCTURES_RENDER_THROUGH.getBooleanValue());
         }
     }

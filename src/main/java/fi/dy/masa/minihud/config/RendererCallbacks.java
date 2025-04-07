@@ -1,5 +1,6 @@
 package fi.dy.masa.minihud.config;
 
+import fi.dy.masa.minihud.renderer.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
@@ -12,14 +13,6 @@ import fi.dy.masa.malilib.util.InfoUtils;
 import fi.dy.masa.malilib.util.StringUtils;
 import fi.dy.masa.minihud.data.DebugDataManager;
 import fi.dy.masa.minihud.data.HudDataManager;
-import fi.dy.masa.minihud.renderer.OverlayRendererBeaconRange;
-import fi.dy.masa.minihud.renderer.OverlayRendererBiomeBorders;
-import fi.dy.masa.minihud.renderer.OverlayRendererConduitRange;
-import fi.dy.masa.minihud.renderer.OverlayRendererLightLevel;
-import fi.dy.masa.minihud.renderer.OverlayRendererRandomTickableChunks;
-import fi.dy.masa.minihud.renderer.OverlayRendererRegion;
-import fi.dy.masa.minihud.renderer.OverlayRendererSlimeChunks;
-import fi.dy.masa.minihud.renderer.OverlayRendererSpawnChunks;
 import fi.dy.masa.minihud.util.DataStorage;
 
 public class RendererCallbacks
@@ -48,11 +41,27 @@ public class RendererCallbacks
         }
     }
 
+    public static void onJukeboxRangeToggled(IConfigBoolean config)
+    {
+        if (config.getBooleanValue())
+        {
+            OverlayRendererJukeboxRange.INSTANCE.setNeedsUpdate();
+        }
+    }
+
     public static void onLightLevelToggled(IConfigBoolean config)
     {
         if (config.getBooleanValue())
         {
             OverlayRendererLightLevel.setNeedsUpdate();
+        }
+    }
+
+    public static void onJukeboxSoundLevelToggled(IConfigBoolean config)
+    {
+        if (config.getBooleanValue())
+        {
+            OverlayRendererJukeboxSoundLevel.setNeedsUpdate();
         }
     }
 

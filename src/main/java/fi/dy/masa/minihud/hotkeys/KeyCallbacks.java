@@ -45,6 +45,9 @@ public class KeyCallbacks
         Configs.Generic.LIGHT_LEVEL_RENDER_THROUGH.setValueChangeCallback((config) -> OverlayRendererLightLevel.INSTANCE.setRenderThrough(config.getBooleanValue()));
         Configs.Generic.STRUCTURES_RENDER_THROUGH.setValueChangeCallback((config) -> OverlayRendererStructures.INSTANCE.setRenderThrough(config.getBooleanValue()));
 
+        Configs.Generic.JUKEBOX_SOUND_LEVEL_RANGE.setValueChangeCallback((config) -> OverlayRendererJukeboxSoundLevel.setNeedsUpdate());
+        Configs.Generic.JUKEBOX_SOUND_LEVEL_RENDER_THROUGH.setValueChangeCallback((config) -> OverlayRendererJukeboxSoundLevel.INSTANCE.setRenderThrough(config.getBooleanValue()));
+
         Configs.Generic.SPAWN_PLAYER_OUTER_OVERLAY_ENABLED.setValueChangeCallback((config) -> OverlayRendererSpawnChunks.setNeedsUpdate());
         Configs.Generic.SPAWN_PLAYER_REDSTONE_OVERLAY_ENABLED.setValueChangeCallback((config) -> OverlayRendererSpawnChunks.setNeedsUpdate());
         Configs.Generic.SPAWN_REAL_OUTER_OVERLAY_ENABLED.setValueChangeCallback((config) -> OverlayRendererSpawnChunks.setNeedsUpdate());
@@ -65,7 +68,9 @@ public class KeyCallbacks
         RendererToggle.OVERLAY_BEACON_RANGE.setValueChangeCallback(RendererCallbacks::onBeaconRangeToggled);
         RendererToggle.OVERLAY_BIOME_BORDER.setValueChangeCallback(RendererCallbacks::onBiomeBorderToggled);
         RendererToggle.OVERLAY_CONDUIT_RANGE.setValueChangeCallback(RendererCallbacks::onConduitRangeToggled);
+        RendererToggle.OVERLAY_JUKEBOX_RANGE.setValueChangeCallback(RendererCallbacks::onJukeboxRangeToggled);
         RendererToggle.OVERLAY_LIGHT_LEVEL.setValueChangeCallback(RendererCallbacks::onLightLevelToggled);
+        RendererToggle.OVERLAY_JUKEBOX_SOUND_LEVEL.setValueChangeCallback(RendererCallbacks::onJukeboxSoundLevelToggled);
         RendererToggle.OVERLAY_RANDOM_TICKS_FIXED.setValueChangeCallback(RendererCallbacks::onRandomTicksFixedToggled);
         RendererToggle.OVERLAY_RANDOM_TICKS_PLAYER.setValueChangeCallback(RendererCallbacks::onRandomTicksPlayerToggled);
         RendererToggle.OVERLAY_REGION_FILE.setValueChangeCallback(RendererCallbacks::onRegionFileToggled);

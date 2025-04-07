@@ -171,8 +171,10 @@ public class DataStorage
         ShapeManager.INSTANCE.clear();
         OverlayRendererBeaconRange.INSTANCE.clear();
         OverlayRendererConduitRange.INSTANCE.clear();
+        OverlayRendererJukeboxRange.INSTANCE.clear();
         OverlayRendererBiomeBorders.INSTANCE.clear();
         OverlayRendererLightLevel.reset();
+        OverlayRendererJukeboxSoundLevel.reset();
     }
 
     public void clearTasks()
@@ -260,6 +262,7 @@ public class DataStorage
         MiniHUD.debugLog("DataStorage#onWorldJoin()");
         OverlayRendererBeaconRange.INSTANCE.setNeedsUpdate();
         OverlayRendererConduitRange.INSTANCE.setNeedsUpdate();
+        OverlayRendererJukeboxRange.INSTANCE.setNeedsUpdate();
         OverlayRendererSpawnChunks.setNeedsUpdate();
 
         if (this.hasIntegratedServer == false)
@@ -401,6 +404,7 @@ public class DataStorage
             {
                 OverlayRendererSpawnableColumnHeights.markChunkChanged(chunkX, chunkZ);
                 OverlayRendererLightLevel.setNeedsUpdate();
+                OverlayRendererJukeboxSoundLevel.setNeedsUpdate();
             }
         }
     }
